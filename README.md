@@ -3,6 +3,6 @@ A website with similar features to quora.com made as a term-long project for my 
 
 ### Screenshots
 
-[<img src="screenshots/1.png" width=700>](screenshots/screenshot1.png)
-[<img src="screenshots/1.png" width=700>](screenshots/screenshot2.png)
-[<img src="screenshots/1.png" width=700>](screenshots/screenshot3.png)
+![Screenshot 1](https://raw.githubusercontent.com/Ashanmaril/Quora-Clone/master/screenshots/screenshot1.png)
+![Screenshot 2](https://raw.githubusercontent.com/Ashanmaril/Quora-Clone/master/screenshots/screenshot2.png)
+![Screenshot 3](https://raw.githubusercontent.com/Ashanmaril/Quora-Clone/master/screenshots/screenshot3.png)
