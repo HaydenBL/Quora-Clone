@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Question Form</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+  </head>
+  <body>
+  	<header>
+  	<a href="./index.html"> <img id="logo" src="logo.png" alt="Quora"/> </a>
+  	</header>
+
+  	<h1 id="login-title" class="center">Submit a Question</h1>
+  	<section class="center" id="submit-section">
+  		<form class="center" id="submit-form">
+  			Website: <input type="url" name="url" id="site-url" placeholder="Enter URL"><br>
+            <br />
+            <textarea rows="10" cols="40" placeholder="Enter your question here"></textarea>
+            <Br />
+  			<input type="submit" name="question-submit" value="Submit"><br>
+  		</form>
+  	</section>
+
+  </body>
+</html>
