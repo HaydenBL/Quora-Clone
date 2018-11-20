@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <title>Question Submtted</title>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="custom.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  	<header>
-  	<a href="./index.php"> <img id="logo" src="logo.png" alt="Quora"/> </a>
-  	</header>
+  	<?php require_once("header.php"); ?>
 
     <div class="center post-display" >
-<?php session_start();
+<?php //session_start();
       if($_SERVER['REQUEST_METHOD'] === 'POST'
         && isset($_SESSION["loggedin"])
         && isset($_SESSION["id"])
@@ -23,6 +22,7 @@
 
       $url = $_POST["url"];
       $question = $_POST["text"];
+      $category = $_POST["category"];
       $user_id = $_SESSION["id"];
       $timestamp = date('Y-m-d g:i:s');
 
@@ -31,26 +31,16 @@
 
       if($validURL && $validQuestion) {
 
-      require_once('../../mysqli-connect.php');
+      require_once('mysqli-connect.php');
 
-      $sql = "CREATE TABLE Questions
-              (
-              id int NOT NULL AUTO_INCREMENT,
-              user_id int NOT NULL,
-              question_text varchar(500) NOT NULL,
-              num_answers int NOT NULL,
-              time_asked timestamp NOT NULL,
-              top_answer_id int,
-              PRIMARY KEY(id)
-              );";
 
-      $conn->query($sql);
-
-      $sql = "INSERT INTO Questions(user_id, question_text, num_answers, time_asked)
+      $sql = "INSERT INTO Questions(user_id, question_text, num_answers, time_asked, category)
       VALUES ("
-      . $user_id . ", \""
+      . $user_id .     ", \""
       . htmlspecialchars($question) . "\", 0, \""
-      . $timestamp . "\");";
+      . $timestamp . "\" , \""
+      . $category . "\"
+    );";
 
       if($conn->query($sql) === TRUE) {
         echo "Question successfully submitted.<br />";

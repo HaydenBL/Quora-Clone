@@ -1,0 +1,37 @@
+header {
+	background-color:#c31d13;
+	/* border-top: 30px solid #c31d13; */
+	/* box-shadow: 0px 5px 10px #888888; */
+	/* margin-bottom:1em; */
+	box-sizing: border-box;
+}
+
+header> .column-3{
+  width: 33%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+}
+
+#fixed-header {
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+header> .login-out{
+  text-align: right;
+  padding: 10px;
+}
+header> .login-out >#header-login {
+	color:white;
+}
+
+
+#logo {
+	padding: 0px 5px 0px 5px;
+	height: 68px;
+	/* margin-top:-10px; */
+}

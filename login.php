@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="custom.css"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic' rel='stylesheet' type='text/css'>
  </head>
 
 <body>
 
-<header>
-  	<a href="./index.php"> <img id="logo" src="logo.png" alt="Quora"/> </a>
-</header>
+  <?php  require_once("header.php"); ?>
 
 <div class="center post-display" >
 
 <?php if($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
 
-<?php 
+<?php
 
 $email = $_POST["email"];
 $password = md5($_POST["password"]);
 
-require_once('../../mysqli-connect.php');
+require_once('mysqli-connect.php');
 
 $sql = "SELECT * FROM Users WHERE email='" . htmlspecialchars($email) . "'";
 $response = $conn->query($sql);
@@ -30,7 +29,7 @@ $response = $conn->query($sql);
 if($response) {
 	if($row = mysqli_fetch_array($response)) {
 		if($row["password"] === htmlspecialchars($password)) {
-			session_start();
+			//session_start();
 			$_SESSION["loggedin"] = true;
 			$_SESSION["id"] = $row["id"];
 			echo "Login success.<br />";

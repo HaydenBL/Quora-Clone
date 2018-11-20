@@ -1,0 +1,27 @@
+#category-div{
+  background: #c31d13;
+  color: white;
+}
+
+#category-div>ul{
+  margin: 0px auto;
+  padding: 0 50px;
+  text-align: center;
+}
+
+#category-div>ul>li{
+  display: inline-block;
+  padding: 7px 10px;
+  font-size: 1.05em;
+  text-transform: capitalize;
+}
+
+#category-div>ul>li>a{
+  color: white;
+}
+
+#category-div>ul>li>a:hover{
+  color: white;
+  text-shadow: 0px 0px 2px white;
+  text-decoration: underline;
+}
