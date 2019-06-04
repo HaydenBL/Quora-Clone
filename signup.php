@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign up</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    <link rel="stylesheet" type="text/css" href="custom.css"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic' rel='stylesheet' type='text/css'>
  </head>
 
 <body>
-
-<header>
-  	<a href="./index.php"> <img id="logo" src="logo.png" alt="Quora"/> </a>
-</header>
-
+<?php require_once("header.php"); ?>
 <?php if($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
 
-<?php 
+<?php
 
 $username = $_POST["username"];
 $password = $_POST["password"];
 $pswdconfirm = $_POST["pswdconfirm"];
 $email = $_POST["email"];
 $bday = $_POST["bday"];
+
 
 $validUsername = preg_match('/^(?!\s)([A-Z0-9^\S]){8,}/i' , $username);
 $validPassword = preg_match('/([A-Z0-9^\s]){8,}/i', $password);
@@ -37,18 +35,9 @@ $validBday = preg_match('/([0-9]){4}[-]([0-9]){2}[-]([0-9]){2}/i', $bday);
 if($validUsername && $validPassword && $passMatch
 	&& $validEmail && $validBday) {
 
-	require_once('../../mysqli-connect.php'); 
-
-	$sql = "CREATE TABLE Users
-		(
-		id int NOT NULL AUTO_INCREMENT,
-		username varchar(255) NOT NULL UNIQUE,
-		password varchar(255) NOT NULL,
-		email varchar(255) NOT NULL UNIQUE,
-		birthday varchar(255) NOT NULL,
-		PRIMARY KEY(id)
-		);";
-	$conn->query($sql);
+	require_once('mysqli-connect.php');
+  $sql = "use mydatabase;";
+  $conn->query($sql);
 	//encrypt passwords
 	$password = md5($_POST["password"]);
 	$pswdconfirm = md5($_POST["pswdconfirm"]);
@@ -62,7 +51,7 @@ if($validUsername && $validPassword && $passMatch
 
 	if($conn->query($sql) === TRUE) {
 		if(!empty($_FILES["upload"]["name"])) {
-			
+
 			$last_id = $conn->insert_id;
 			$target_dir = "avatars/";
 			$target_file = $target_dir. "avatar-" . $last_id . ".png";
@@ -108,7 +97,7 @@ if($validUsername && $validPassword && $passMatch
 		echo "Registration successful.<br />";
 
 	} else {
-		echo "Error: could not add user: " . $conn->error . "<br />";
+		echo "Error: could not add user: <br/>" . $conn->error . "<br />";
 	}
 } else {
 	echo "Registration error.<br />";

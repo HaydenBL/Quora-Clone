@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <title>Answer Submtted</title>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="custom.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  	<header>
-  	<a href="./index.php"> <img id="logo" src="logo.png" alt="Quora"/> </a>
-  	</header>
-
+  	<?php require_once("header.php"); ?>
     <div class="center post-display" >
-<?php session_start();
+<?php //session_start();
       if($_SERVER['REQUEST_METHOD'] === 'POST'
         && isset($_SESSION["loggedin"])
         && isset($_SESSION["id"])
@@ -31,20 +29,7 @@
 
       if($validURL && $validAnswer) {
 
-      require_once('../../mysqli-connect.php');
-
-      $sql = "CREATE TABLE Answers
-              (
-              id int NOT NULL AUTO_INCREMENT,
-              user_id int NOT NULL,
-              answer_text varchar(500) NOT NULL,
-              question_id int NOT NULL,
-              upvotes int NOT NULL,
-              downvotes int NOT NULL,
-              PRIMARY KEY(id)
-              );";
-
-      $conn->query($sql);
+      require_once('mysqli-connect.php');
 
       $sql = "INSERT INTO Answers(user_id, answer_text, question_id, upvotes, downvotes)
       VALUES ("

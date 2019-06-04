@@ -10,7 +10,7 @@ if($highestSet)
 session_start();
 $loggedin = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
 
-require_once('../../mysqli-connect.php');
+require_once('mysqli-connect.php');
 
 if($highestSet) {
 	$sql = "SELECT * FROM Answers WHERE question_id =" . $qid . " AND id>" . $highest . " ORDER BY id DESC";
@@ -30,7 +30,7 @@ $response = $conn->query($sql);
 ?>
 
 	<div class="qd-answer">
-        <?php 
+        <?php
             if($loggedin){
             $sql = "SELECT value FROM Votes WHERE user_id=" . $_SESSION["id"] . " AND answer_id=" . $row["id"];
             $result = $conn->query($sql);
@@ -48,11 +48,11 @@ $response = $conn->query($sql);
 
                 } else { echo "upvote-unhighlight"; }
 
-            ?>" /> 
+            ?>" />
             <label class="upvote-count"><?php echo $row["upvotes"]; ?> Upvotes</label>
             <br />
 
-            <img src="downvote-grey.png" alt=<?php if($loggedin){echo "\"" . $row["id"] . "\"";} ?> class="downvote-arrow 
+            <img src="downvote-grey.png" alt=<?php if($loggedin){echo "\"" . $row["id"] . "\"";} ?> class="downvote-arrow
             <?php
                 if($result) {
                     if($vote["value"] == -1) { echo "downvote-highlight"; }
@@ -60,10 +60,10 @@ $response = $conn->query($sql);
 
                 } else { echo "downvote-unhighlight"; }
 
-            ?>" /> 
+            ?>" />
             <label class="downvote-count"><?php echo $row["downvotes"]; ?> Downvotes</label>
         </aside>
-        
+
 
         <aside class="answerer-info">
             <label class="answer-username"><?php echo $user["username"] ?></label>

@@ -1,0 +1,45 @@
+
+body {
+	background-color:#e5e5e5;
+	margin:0;
+}
+
+hr{
+  opacity: .3;
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+}
+
+.column-3{
+  display: inline-block;
+  width : 24%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.column-2{
+  display: inline-block;
+  width : 15%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.column-10{
+  display: inline-block;
+  width : 82%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.column-8{
+  display: inline-block;
+  width : 65%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.column-4{
+  display: inline-block;
+  width : 32%;
+  box-sizing: border-box;
+  vertical-align: top;
+}

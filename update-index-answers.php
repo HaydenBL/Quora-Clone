@@ -2,7 +2,7 @@
 
 $qid = $_GET["id"];
 
-require_once('../../mysqli-connect.php');
+require_once('mysqli-connect.php');
 
 $sql = "SELECT * FROM Questions WHERE id =" . $qid;
 $response = $conn->query($sql);

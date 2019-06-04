@@ -5,7 +5,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE) {
 	$user_id = $_SESSION["id"];
 	$answer_id = $_GET["id"];
 
-	require_once('../../mysqli-connect.php');
+	require_once('mysqli-connect.php');
 
 	//check if answer exists
 	$sql = "SELECT id FROM Answers WHERE id=" . $answer_id;
@@ -49,7 +49,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE) {
 					$conn->query($sql);
 					//echo "Vote changed from downvote";
 				}
-				
+
 			}
 			mysqli_free_result($result);
 		}
@@ -62,7 +62,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE) {
 			$conn->query($sql);
 			//echo "Added upvote";
 		}
-		
+
 		//echo "ID: " . $user_id . " - Question: " . $answer_id;
 
 	} else {

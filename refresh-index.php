@@ -5,7 +5,7 @@ $mostRecent = $_GET["mostrecent"];
 session_start();
 $loggedin = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true;
 
-require_once('../../mysqli-connect.php');
+require_once('mysqli-connect.php');
 
 if($mostRecent != null) {
 	$sql = "SELECT * FROM Questions WHERE id > " . $mostRecent . " ORDER BY id DESC";
@@ -35,7 +35,7 @@ if($response) {
 			<img src=<?php echo "\"" . $avatarpath . "\""; ?> alt="Avatar" class="question-avatar">
 			<br />
 			<p class="date"><?php echo $row["time_asked"]; ?></p>
-			
+
 			<a href= <?php echo "./question-detail.php?qid=" . $row["id"] ?> class="num-answers"><?php echo $row["num_answers"]; ?> answers</a>
 			<?php if($loggedin) { ?>
 			<a href=<?php echo "./form-answer.php?qid=" . $row["id"]; ?> class="answer-button">Answer!</a>
@@ -57,7 +57,7 @@ if($response) {
 
 					$top_answerer = NULL;
 					if($user = mysqli_fetch_array($result)) {
-						$top_answerer = $user; 
+						$top_answerer = $user;
 					}
 
 					$avatarpath = "./avatars/avatar-" . $top_answerer["id"] . ".png";
